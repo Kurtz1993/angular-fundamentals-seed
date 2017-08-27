@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Passenger } from '../../models/passenger.interface';
 
 @Component({
@@ -25,10 +25,12 @@ import { Passenger } from '../../models/passenger.interface';
         </div>
     `
 })
-export class PassengerDashboardComponent {
+export class PassengerDashboardComponent implements OnInit {
     passengers: Passenger[];
 
-    constructor() {
+    constructor() { }
+
+    ngOnInit(): void {
         this.passengers = [{
             id: 1,
             fullname: 'Stephen',
