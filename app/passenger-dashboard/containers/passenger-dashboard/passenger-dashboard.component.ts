@@ -3,15 +3,7 @@ import { Passenger } from '../../models/passenger.interface';
 
 @Component({
   selector: 'passenger-dashboard',
-  template: `
-    <div>
-      <passenger-count
-        [items]="passengers"></passenger-count>
-      <passenger-detail
-        *ngFor="let passenger of passengers;"
-        [detail]="passenger"></passenger-detail>
-    </div>
-    `
+  templateUrl: './passenger-dashboard.component.html'
 })
 export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];

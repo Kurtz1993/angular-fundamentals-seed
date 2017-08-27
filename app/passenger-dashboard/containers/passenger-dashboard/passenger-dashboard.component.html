@@ -1,0 +1,7 @@
+<div>
+  <passenger-count
+    [items]="passengers"></passenger-count>
+  <passenger-detail
+    *ngFor="let passenger of passengers;"
+    [detail]="passenger"></passenger-detail>
+</div>
