@@ -9,6 +9,9 @@ import { PassengerDashboardComponent } from './containers/passenger-dashboard/pa
     ],
     imports: [
         CommonModule
+    ],
+    exports: [
+        PassengerDashboardComponent
     ]
 })
 export class PassengerDashboardModule {}
