@@ -12,12 +12,20 @@ export class PassengerDashboardService {
   constructor(private http: Http) {}
 
   getPassengers(): Observable<Passenger[]> {
-    return this.http.get(passengerApi)
+    return this.http
+      .get(passengerApi)
       .map(res => res.json());
   }
 
   updatePassenger(passenger: Passenger): Observable<Passenger> {
-    return this.http.put(`${passengerApi}/${passenger.id}`, passenger)
+    return this.http
+      .put(`${passengerApi}/${passenger.id}`, passenger)
+      .map(res => res.json());
+  }
+
+  removePassenger(passenger: Passenger): Observable<Passenger> {
+    return this.http
+      .delete(`${passengerApi}/${passenger.id}`)
       .map(res => res.json());
   }
 }
