@@ -15,4 +15,9 @@ export class PassengerDashboardService {
     return this.http.get(passengerApi)
       .map(res => res.json());
   }
+
+  updatePassenger(passenger: Passenger): Observable<Passenger> {
+    return this.http.put(`${passengerApi}/${passenger.id}`, passenger)
+      .map(res => res.json());
+  }
 }
