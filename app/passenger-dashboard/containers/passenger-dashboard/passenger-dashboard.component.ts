@@ -50,6 +50,13 @@ export class PassengerDashboardComponent implements OnInit {
   }
 
   handleEdit(event: Passenger): void {
-    console.log(event);
+    this.passengers = this.passengers
+      .map(passenger => {
+        if (passenger.id === event.id) {
+          passenger = Object.assign({}, passenger, event);
+        }
+
+        return passenger;
+      });
   }
 }
