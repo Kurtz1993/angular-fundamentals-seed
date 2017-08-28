@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
 
 import { PassengerDashboardService } from '../../passenger-dashboard.service';
 
@@ -12,12 +14,16 @@ import { Passenger } from '../../models/passenger.interface';
 export class PassengerViewerComponent implements OnInit {
   passenger: Passenger;
 
-  constructor(private passengerService: PassengerDashboardService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private passengerService: PassengerDashboardService) { }
 
   ngOnInit() {
-    this.passengerService
-      .getPassenger(1)
-      .subscribe(res => this.passenger = res);
+    this.route.params
+      .switchMap((params: Passenger) => this.passengerService
+        .getPassenger(params.id))
+      .subscribe(res => this.passenger = res);;
   }
 
   onPassengerUpdate(passenger: Passenger): void {
@@ -26,5 +32,9 @@ export class PassengerViewerComponent implements OnInit {
       .subscribe(res => {
         this.passenger = Object.assign({}, this.passenger, passenger);
       });
+  }
+
+  goBack(): void {
+    this.router.navigate(['/passengers']);
   }
 }
