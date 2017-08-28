@@ -10,7 +10,7 @@ import { PassengerDashboardModule } from './passenger-dashboard/passenger-dashbo
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: '*', component: NotFoundComponent }
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
