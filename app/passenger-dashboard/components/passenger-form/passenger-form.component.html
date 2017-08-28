@@ -33,5 +33,16 @@
     <input type="number" name="checkInDate" [ngModel]="detail?.checkInDate">
   </div>
 
+  <div>
+    <label>Luggage</label>
+    <select name="baggage"
+      [ngModel]="detail?.baggage">
+      <option [value]="item.key"
+        *ngFor="let item of baggage">
+        {{item.value}}
+      </option>
+    </select>
+  </div>
+
   {{ form.value | json }}
 </form>
