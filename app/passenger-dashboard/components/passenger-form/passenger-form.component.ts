@@ -7,6 +7,12 @@ import { Passenger } from '../../models/passenger.interface';
   styleUrls: ['./passenger-form.component.scss'],
   templateUrl: './passenger-form.component.html'
 })
-export class PassengerFormComponent {
+export class PassengerFormComponent implements OnChanges {
   @Input() detail: Passenger;
+
+  toggleCheckIn(checkedIn: boolean) {
+    if (checkedIn) {
+      this.detail.checkInDate = Date.now();
+    }
+  }
 }

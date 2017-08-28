@@ -1,3 +1,47 @@
-<form>
-  Form! {{detail | json}}
+<form #form="ngForm" novalidate>
+  {{ detail | json }}
+
+  <div>
+    <label for="fullname">Passenger name:</label>
+    <input
+      type="text"
+      name="fullname"
+      [ngModel]="detail?.fullname">
+  </div>
+
+  <div>
+    <label for="id">Passenger ID:</label>
+    <input
+      type="number"
+      name="id"
+      [ngModel]="detail?.id">
+  </div>
+
+  <div>
+    <label>
+      <input
+        type="radio"
+        [value]="true"
+        name="checkedIn"
+        [ngModel]="detail?.checkedIn"
+        (ngModelChange)="toggleCheckIn($event)">
+      Yes
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        [value]="false"
+        name="checkedIn"
+        [ngModel]="detail?.checkedIn">
+      No
+    </label>
+  </div>
+
+  <div *ngIf="form.value.checkedIn">
+    <label for="checkInDate">Check in date</label>
+    <input type="number" name="checkInDate" [ngModel]="detail?.checkInDate">
+  </div>
+
+  {{ form.value | json }}
 </form>
