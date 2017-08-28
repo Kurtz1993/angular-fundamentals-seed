@@ -6,7 +6,13 @@
     <input
       type="text"
       name="fullname"
+      required
+      #fullname="ngModel"
       [ngModel]="detail?.fullname">
+
+      <div class="error" *ngIf="fullname.errors?.required && fullname.dirty">
+        Passenger name is required.
+      </div>
   </div>
 
   <div>
@@ -14,7 +20,13 @@
     <input
       type="number"
       name="id"
+      #id="ngModel"
+      required
       [ngModel]="detail?.id">
+
+    <div class="error" *ngIf="id.errors?.required && id.dirty">
+      Passenger ID is required.
+    </div>
   </div>
 
   <div>
@@ -30,19 +42,26 @@
 
   <div *ngIf="form.value.checkedIn">
     <label for="checkInDate">Check in date</label>
-    <input type="number" name="checkInDate" [ngModel]="detail?.checkInDate">
+    <input
+      type="number"
+      name="checkInDate"
+      [ngModel]="detail?.checkInDate">
   </div>
 
   <div>
     <label>Luggage</label>
-    <select name="baggage"
+    <select
+      name="baggage"
       [ngModel]="detail?.baggage">
-      <option [ngValue]="item.key"
+      <option
+        [ngValue]="item.key"
         *ngFor="let item of baggage">
         {{item.value}}
       </option>
     </select>
   </div>
 
-  {{ form.value | json }}
+  <div>{{ form.value | json }}</div>
+  <div>Valid: {{ form.valid | json }}</div>
+  <div>Invalid: {{ form.invalid | json }}</div>
 </form>
