@@ -5,5 +5,6 @@
     *ngFor="let passenger of passengers;"
     [detail]="passenger"
     (edit)="handleEdit($event)"
-    (remove)="handleRemove($event)"></passenger-detail>
+    (remove)="handleRemove($event)"
+    (view)="handleView($event)"></passenger-detail>
 </div>
