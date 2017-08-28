@@ -37,7 +37,7 @@
     <label>Luggage</label>
     <select name="baggage"
       [ngModel]="detail?.baggage">
-      <option [value]="item.key"
+      <option [ngValue]="item.key"
         *ngFor="let item of baggage">
         {{item.value}}
       </option>
