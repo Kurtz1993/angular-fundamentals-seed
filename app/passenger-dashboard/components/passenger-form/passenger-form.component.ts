@@ -7,7 +7,7 @@ import { Passenger } from '../../models/passenger.interface';
   styleUrls: ['./passenger-form.component.scss'],
   templateUrl: './passenger-form.component.html'
 })
-export class PassengerFormComponent implements OnChanges {
+export class PassengerFormComponent {
   @Input() detail: Passenger;
 
   toggleCheckIn(checkedIn: boolean) {
